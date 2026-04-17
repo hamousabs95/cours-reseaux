@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction aux Réseaux Informatiques</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0891b2', // Cyan 600
+                        secondary: '#164e63', // Cyan 900
+                        accent: '#06b6d4', // Cyan 500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Configuration du défilement pour que chaque section prenne un écran (Snap Scrolling) */
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+        
+        /* On s'assure que chaque section fait au moins la taille de l'écran et s'aligne en haut */
+        .page-section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem; /* Laisse de la place pour la barre de navigation */
+            padding-bottom: 2rem;
+        }
+
+        /* Personnalisation de la barre de défilement (optionnel) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f3f4f6; }
+        ::-webkit-scrollbar-thumb { background: #0891b2; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed selection:bg-accent selection:text-white">
+
+    <!-- Barre de Navigation fixe -->
+    <nav class="fixed top-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-md shadow-sm z-50 flex items-center justify-between px-4 md:px-8 border-b border-gray-200">
+        <div class="flex items-center gap-2 font-bold text-secondary text-xl">
+            <i class="fas fa-network-wired text-primary"></i> RÉSEAUX
+        </div>
+        <!-- Liens de navigation (cachés sur très petits écrans) -->
+        <div class="hidden md:flex gap-6 text-sm font-semibold text-gray-600">
+            <a href="#accueil" class="hover:text-primary transition-colors">Accueil</a>
+            <a href="#definition" class="hover:text-primary transition-colors">Définition</a>
+            <a href="#equipements" class="hover:text-primary transition-colors">Équipements</a>
+            <a href="#supports" class="hover:text-primary transition-colors">Supports</a>
+            <a href="#types" class="hover:text-primary transition-colors">Types & IP</a>
+            <a href="#cablage" class="hover:text-primary transition-colors">Câblage</a>
+            <a href="#demo" class="hover:text-primary transition-colors">Démo & Métiers</a>
+        </div>
+    </nav>
+
+    <!-- SECTION 1 : Accueil -->
+    <section id="accueil" class="page-section bg-secondary text-white relative overflow-hidden flex-col !pt-0">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center px-4">
+            <div class="inline-block bg-accent text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider mb-4 uppercase">Cours d'initiation</div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">Introduction aux Réseaux</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-200 max-w-2xl mx-auto">
+                Comment un message que vous envoyez sur WhatsApp arrive-t-il exactement à destination ?
+            </p>
+        </div>
+        <!-- Indication de défilement -->
+        <a href="#definition" class="absolute bottom-10 animate-bounce text-white/70 hover:text-white">
+            <i class="fas fa-chevron-down text-3xl"></i>
+        </a>
+    </section>
+
+    <!-- SECTION 2 : Définition -->
+    <section id="definition" class="page-section px-4">
+        <div class="max-w-6xl mx-auto w-full bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1 space-y-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-secondary flex items-center gap-3">
+                        <i class="fas fa-network-wired text-primary"></i> Qu'est-ce qu'un réseau ?
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Derrière cette action quotidienne d'envoyer un message, il y a tout un système appelé <strong>réseau informatique</strong>... et c'est ce que nous allons découvrir ensemble.
+                    </p>
+                    <div class="bg-cyan-50 border-l-4 border-primary p-6 rounded-r-lg mt-6">
+                        <h3 class="font-bold text-secondary text-xl mb-2">Définition simple</h3>
+                        <p class="text-lg italic text-gray-700">"Un réseau = plusieurs appareils connectés pour échanger des informations.<br>Pour faire simple, un réseau, c'est simplement des appareils qui communiquent."</p>
+                    </div>
+                </div>
+                <div class="flex-1 w-full">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Serveurs informatiques" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 : Équipements -->
+    <section id="equipements" class="page-section px-4 bg-gray-100/50">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-secondary mb-10">Les éléments essentiels pour constituer un réseau</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Ordinateur -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=60" alt="Ordinateur" class="w-full h-40 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2"><i class="fas fa-laptop text-primary mr-2"></i> Ordinateur / Téléphone</h3>
+                        <p class="text-gray-600 text-sm">Les points de départ et d'arrivée de l'information.</p>
+                    </div>
+                </div>
+                <!-- Routeur (Image corrigée) -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Linksys-Wireless-G-Router.jpg/800px-Linksys-Wireless-G-Router.jpg" alt="Routeur WiFi" class="w-full h-40 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2"><i class="fas fa-wifi text-primary mr-2"></i> Routeur</h3>
+                        <p class="text-gray-600 text-sm">Il dirige le trafic entre différents réseaux.</p>
+                    </div>
+                </div>
+                <!-- Switch -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=500&q=60" alt="Switch Réseau" class="w-full h-40 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2"><i class="fas fa-server text-primary mr-2"></i> Switch</h3>
+                        <p class="text-gray-600 text-sm">Il connecte les appareils au sein d'un même réseau local.</p>
+                    </div>
+                </div>
+                <!-- Serveur -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=500&q=60" alt="Salle de serveurs" class="w-full h-40 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2"><i class="fas fa-database text-primary mr-2"></i> Serveur</h3>
+                        <p class="text-gray-600 text-sm">Il stocke et distribue les données (sites web, vidéos).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 : Supports de transmission (NOUVEAU) -->
+    <section id="supports" class="page-section px-4">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-secondary mb-4">Les supports de transmission</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Comment l'information voyage-t-elle physiquement d'un appareil à l'autre ?</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Cuivre -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 rounded-full bg-cyan-50 flex items-center justify-center text-primary text-3xl mb-4">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Câble en Cuivre</h3>
+                    <p class="text-gray-600 text-sm">Transmission par <strong>impulsions électriques</strong>. Très utilisé pour les réseaux locaux (câbles RJ45).</p>
+                </div>
+                
+                <!-- Fibre Optique -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-3xl mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fibre Optique</h3>
+                    <p class="text-gray-600 text-sm">Transmission par <strong>signaux lumineux</strong>. Permet un très haut débit sur de longues distances.</p>
+                </div>
+
+                <!-- Sans Fil -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 text-3xl mb-4">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Sans Fil (Wi-Fi / 4G)</h3>
+                    <p class="text-gray-600 text-sm">Transmission par <strong>ondes radioélectriques</strong>. Offre la mobilité sans être branché physiquement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 : Types de réseaux et IP -->
+    <section id="types" class="page-section px-4 bg-gray-100/50">
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            
+            <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 h-full">
+                <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-6 flex items-center gap-2">
+                    <i class="fas fa-globe text-primary"></i> Types de réseaux
+                </h2>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <div class="bg-cyan-100 p-4 rounded-lg text-primary text-xl"><i class="fas fa-home"></i></div>
+                        <div>
+                            <strong class="text-xl text-gray-800">LAN (maison, école)</strong>
+                            <p class="text-gray-600 mt-1">Réseau local, à petite échelle.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="bg-cyan-100 p-4 rounded-lg text-primary text-xl"><i class="fas fa-earth-americas"></i></div>
+                        <div>
+                            <strong class="text-xl text-gray-800">WAN (Internet)</strong>
+                            <p class="text-gray-600 mt-1">Réseau étendu.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-secondary text-white p-8 md:p-10 rounded-2xl shadow-sm relative overflow-hidden h-full flex flex-col justify-center">
+                <i class="fas fa-map-marker-alt absolute -right-4 -bottom-4 text-9xl text-white opacity-10"></i>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-2 relative z-10">
+                    <i class="fas fa-id-card text-accent"></i> L'Adresse IP
+                </h2>
+                <div class="space-y-4 relative z-10">
+                    <p class="text-xl font-light">Chaque appareil a une adresse IP.</p>
+                    <div class="bg-black/30 p-6 rounded-lg font-mono text-center text-2xl md:text-3xl tracking-widest my-4 shadow-inner">
+                        192.168.1.10
+                    </div>
+                    <p class="text-gray-300 text-lg">Une adresse IP est un numéro qui identifie de manière unique un appareil sur un réseau.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 6 : Confection de câbles -->
+    <section id="cablage" class="page-section px-4">
+        <div class="max-w-5xl mx-auto w-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="bg-gray-50 border-b border-gray-100 p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-secondary flex items-center gap-3">
+                    <i class="fas fa-plug text-primary"></i> Confection de câbles RJ45
+                </h2>
+                <p class="text-gray-600 mt-2">Ordre des couleurs</p>
+            </div>
+            
+            <div class="p-4 md:p-8 overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-secondary text-white text-sm md:text-base">
+                            <th class="p-3 md:p-4 font-semibold rounded-tl-lg whitespace-nowrap">Broche</th>
+                            <th class="p-3 md:p-4 font-semibold whitespace-nowrap">◆ Norme T568A</th>
+                            <th class="p-3 md:p-4 font-semibold rounded-tr-lg whitespace-nowrap">◆ Norme T568B</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700 divide-y divide-gray-200 text-sm md:text-base">
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">1</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-green-500 bg-white flex-shrink-0"></div> Blanc/Vert</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-orange-500 bg-white flex-shrink-0"></div> Blanc/Orange</div></td></tr>
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">2</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-green-500 flex-shrink-0"></div> Vert</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-orange-500 flex-shrink-0"></div> Orange</div></td></tr>
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">3</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-orange-500 bg-white flex-shrink-0"></div> Blanc/Orange</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-green-500 bg-white flex-shrink-0"></div> Blanc/Vert</div></td></tr>
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">4</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-blue-500 flex-shrink-0"></div> Bleu</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-blue-500 flex-shrink-0"></div> Bleu</div></td></tr>
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">5</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-blue-500 bg-white flex-shrink-0"></div> Blanc/Bleu</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-blue-500 bg-white flex-shrink-0"></div> Blanc/Bleu</div></td></tr>
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">6</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-orange-500 flex-shrink-0"></div> Orange</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-green-500 flex-shrink-0"></div> Vert</div></td></tr>
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">7</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-amber-800 bg-white flex-shrink-0"></div> Blanc/Marron</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border-2 border-amber-800 bg-white flex-shrink-0"></div> Blanc/Marron</div></td></tr>
+                        <tr class="hover:bg-gray-50"><td class="p-3 md:p-4 font-bold">8</td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-amber-800 flex-shrink-0"></div> Marron</div></td><td class="p-3 md:p-4"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-amber-800 flex-shrink-0"></div> Marron</div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7 : Démo & Métiers -->
+    <section id="demo" class="page-section px-4 bg-gray-100/50">
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            
+            <div class="bg-gradient-to-br from-primary to-secondary text-white p-8 md:p-10 rounded-2xl shadow-md flex flex-col justify-center">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <i class="fas fa-laptop-code"></i> Démo pratique 1 (connexion)
+                </h2>
+                <p class="font-light text-lg mb-6">"On va simuler notre propre réseau avec qlqs matériels."</p>
+                <div class="bg-black/20 p-4 rounded-lg mb-4 font-mono">
+                    <code class="text-green-400 block">&gt; ping 192.168.1.10</code>
+                    <code class="text-gray-300 block">Envoi d'une requête 'Ping'...</code>
+                    <code class="text-gray-300 block">Réponse de 192.168.1.10 : octets=32 temps&lt;1ms</code>
+                </div>
+                <p class="font-light italic text-sm text-cyan-100">Tester la communication avec des pings (Si le matériel est au complet pour la pratique)</p>
+            </div>
+
+            <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-center">
+                <h2 class="text-2xl font-bold text-secondary mb-4 flex items-center gap-3">
+                    <i class="fas fa-user-astronaut text-primary"></i> Métiers
+                </h2>
+                <div class="flex flex-col gap-3 mb-6">
+                    <span class="bg-cyan-50 text-secondary border border-cyan-200 px-4 py-3 rounded-lg font-semibold flex items-center"><i class="fas fa-project-diagram w-8"></i> Ingénieur réseau</span>
+                    <span class="bg-cyan-50 text-secondary border border-cyan-200 px-4 py-3 rounded-lg font-semibold flex items-center"><i class="fas fa-shield-alt w-8"></i> Cybersécurité</span>
+                    <span class="bg-cyan-50 text-secondary border border-cyan-200 px-4 py-3 rounded-lg font-semibold flex items-center"><i class="fas fa-satellite-dish w-8"></i> Télécoms</span>
+                </div>
+                <p class="text-gray-600 italic font-bold">"C'est un domaine avec beaucoup d'opportunités."</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION 8 : Conclusion -->
+    <section id="conclusion" class="page-section px-4">
+        <div class="max-w-4xl mx-auto w-full text-center">
+            
+            <div class="mb-12">
+                <i class="far fa-question-circle text-5xl text-primary mb-4"></i>
+                <h2 class="text-3xl font-bold text-secondary">? Des questions ?</h2>
+                <p class="text-gray-600 mt-2">Essayer de répondre au maximum de questions pour assurer la compréhension des élèves</p>
+            </div>
+
+            <div class="bg-accent text-white p-8 md:p-12 rounded-2xl shadow-lg relative overflow-hidden text-left">
+                <h2 class="text-3xl font-bold mb-6 border-b border-white/20 pb-4">Conclusion</h2>
+                <div class="space-y-4 text-lg font-light text-cyan-50">
+                    <p>☑ "Aujourd'hui, nous avons vu que les réseaux sont partout autour de nous.</p>
+                    <p>Derrière chaque message, chaque vidéo ou appel, il y a des technologies comme les adresses IP, le DNS ou encore la passerelle qui permettent aux appareils de communiquer.</p>
+                    <p>Nous avons aussi vu, avec la démonstration, que les ordinateurs peuvent échanger directement des informations.</p>
+                    <p class="font-semibold text-white text-xl mt-4">Les réseaux ne sont pas seulement une matière, mais un domaine d'avenir avec beaucoup d'opportunités !"</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
